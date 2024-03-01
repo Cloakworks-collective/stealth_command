@@ -109,7 +109,6 @@ contract AutoBattler is IAutoBattler {
         }
     }
 
-
     /// INTERNAL FUNCTIONS ///
     function _validateArmy(
         uint32 _infantry, 

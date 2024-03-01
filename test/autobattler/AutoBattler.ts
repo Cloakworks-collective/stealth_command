@@ -1,7 +1,7 @@
 import { createFheInstance } from "../../utils/instance";
 import type { Signers } from "../types";
-import { shouldBehaveLikeCounter } from "./Counter.behavior";
-import { deployCounterFixture, getTokensFromFaucet } from "./Counter.fixture";
+import { shouldBehave } from "./AutoBattler.behavior";
+import { deployCounterFixture, getTokensFromFaucet } from "./AutoBattler.fixture";
 import hre from "hardhat";
 
 describe("Unit tests", function () {
@@ -11,8 +11,8 @@ describe("Unit tests", function () {
     // get tokens from faucet if we're on localfhenix and don't have a balance
     await getTokensFromFaucet();
     // deploy test contract
-    const { counter, address } = await deployCounterFixture();
-    this.counter = counter;
+    const { autoBattler, address } = await deployCounterFixture();
+    this.autoBattler = autoBattler;
 
     // initiate fhenixjs
     this.instance = await createFheInstance(hre, address);
@@ -22,7 +22,7 @@ describe("Unit tests", function () {
     this.signers.admin = signers[0];
   });
 
-  describe("Counter", function () {
-    shouldBehaveLikeCounter();
+  describe("AutoBattler", function () {
+    shouldBehave();
   });
 });

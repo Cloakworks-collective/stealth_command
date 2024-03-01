@@ -1,19 +1,18 @@
-import type { Counter } from "../../types";
-import axios from "axios";
+import type { AutoBattler } from "../../types";
 import hre from "hardhat";
 
 export async function deployCounterFixture(): Promise<{
-  counter: Counter;
+  autoBattler: AutoBattler;
   address: string;
 }> {
   const accounts = await hre.ethers.getSigners();
   const contractOwner = accounts[0];
 
-  const Counter = await hre.ethers.getContractFactory("Counter");
-  const counter = await Counter.connect(contractOwner).deploy();
-  await counter.waitForDeployment();
-  const address = await counter.getAddress();
-  return { counter, address };
+  const AutoBattler = await hre.ethers.getContractFactory("AutoBattler");
+  const autoBattler = await AutoBattler.connect(contractOwner).deploy();
+  await autoBattler.waitForDeployment();
+  const address = await autoBattler.getAddress();
+  return { autoBattler, address };
 }
 
 export async function getTokensFromFaucet() {
