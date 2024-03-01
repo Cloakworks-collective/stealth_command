@@ -75,3 +75,47 @@ Moreover, as the battle game logic becomes more complicated, it might be prudent
 FHE excels in privacy and encryption, and ZK is good for verifiable off-chain computation.
 
 ![alt text](images/meme.png)
+
+### How to run these contracts 
+
+STEP 1: clone 
+
+```
+git clone https://github.com/Switch-Labs/stealth_command.git
+cd stealth_command
+pnpm install
+```
+
+STEP 2: run localfhenix (make sure you ahve docker installed)
+
+```
+pnpm localfhenix:start
+```
+
+Deploy Locally: 
+
+```
+npx hardhat compile 
+npx hardhat deploy
+```
+
+Finally run the tests! 
+
+```
+npm run test
+```
+
+![alt text](images/tests_pass.png)
+
+
+### Implementation Progress
+
+* :white_check_mark: Successfully import ZK logic to FHE
+* :white_check_mark: Compile Contracts
+* :white_check_mark: Deploy Contract
+* :white_check_mark: Add Unit Tests
+* :white_check_mark: End to End testing for battles
+* :x: Deploy in Testnest 
+* :x: UI 
+
+
