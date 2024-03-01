@@ -1,5 +1,20 @@
 ![alt text](images/cover.png)
+
 # Stealth Command: The Hidden Fronts
+
+### Table of Contents
+
+- [Stealth Command: The Hidden Fronts](#stealth-command--the-hidden-fronts)
+  * [Background:](#background)
+  * [Art of war - an introduction to "Stealth Command".](#art-of-war---an-introduction-to--stealth-command)
+  * [Comparison of ZK and FHE implementation](#comparison-of-zk-and-fhe-implementation)
+    + [How it worked in ZK:](#how-it-worked-in-zk)
+    + [How it works with FHE](#how-it-works-with-fhe)
+    + [Advantages of using FHE:](#advantages-of-using-fhe)
+    + [Future Version of the game - ZK + FHE](#future-version-of-the-game---zk---fhe)
+    + [How to run these contracts](#how-to-run-these-contracts)
+    + [Implementation Progress](#implementation-progress)
+
 
 ## Background:
 
