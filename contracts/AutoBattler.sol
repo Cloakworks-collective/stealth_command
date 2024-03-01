@@ -83,44 +83,30 @@ contract AutoBattler is IAutoBattler {
         euint32 attackingTanks = FHE.asEuint32(_tanks);
         euint32 attackingArtillery = FHE.asEuint32(_artillery);
 
-        attackerPoints = 0;
+        uint8 attackerPoints = 0;
         // tanks > infantry
         ebool roundOne = attackingTanks.gt(defendingInfantry);
-        bool roundOneResult = FHE.decrypt(roundOne);
-        if (roundOneResult){
+        if (FHE.decrypt(roundOne)){
             attackerPoints++;
         }
     
         // infantry > artillery
         ebool roundTwo = attackingInfantry.gt(defendingArtillery);
-        bool roundTwoResult = FHE.decrypt(roundTwo);
-        if (roundTwoResult){
+        if (FHE.decrypt(roundTwo)){
             attackerPoints++;
         }
 
         // artillery > tanks
         ebool roundThree = attackingArtillery.gt(defendingTanks);
-        bool roundThreeResult = FHE.decrypt(roundThree);
-        if (roundThreeResult){
+        if (FHE.decrypt(roundThree)){
             attackerPoints++;
         }
 
-        if(attackerPoints > 1){
-            winner = msg.sender;
+        if (attackerPoints > 1) {
+            gameRecord.players[msg.sender].points++;
         } else {
-            winner = _defender;
+            defenderCity.points++;
         }
-        
-        // Update points
-        winnerCity = gameRecord.players[winner];
-        winnerCity.points++;
-        
-        // update battle nonce 
-        numberOfBattles++;
-
-        // Emit event
-        emit Battle(winner, numberOfBattles);
-
     }
 
 
