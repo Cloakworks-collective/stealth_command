@@ -67,8 +67,8 @@ contract AutoBattler is IAutoBattler {
         uint32 _infantry,
         uint32 _tanks,
         uint32 _artillery
-    ) public override isPlayer {
-        // Validate player's attacking aarmy 
+    ) public override{
+        // Validate player's attacking army 
         _validateArmy(_infantry, _tanks, _artillery);
 
         // Battle
@@ -145,6 +145,21 @@ contract AutoBattler is IAutoBattler {
         City storage playerCity = gameRecord.players[msg.sender];
         playerCity.defense = _defense;
         playerCity.cityStatus = CityStatus.DefenseSet;
+    }
+
+    /// GETTERS ///
+    function playerState(address _player) public view override returns (      
+        CityStatus cityStatus,
+        uint256 points,
+        uint256 lastAttackedAt,
+        uint256 lastDefendedAt
+        ) {
+        return (
+                gameRecord.players[_player].cityStatus,
+                gameRecord.players[_player].points,
+                gameRecord.players[_player].lastAttackedAt,
+                gameRecord.players[_player].lastDefendedAt
+            );
     }
 
 

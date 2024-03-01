@@ -72,6 +72,12 @@ abstract contract IAutoBattler {
         _;
     }
 
+    modifier canBeAttacked(address _defender) {
+        require(gameRecord.players[_defender].cityStatus == CityStatus.DefenseSet, "Player cannot be attacked");
+        _;
+        
+    }
+
     /// FUNCTIONS ///
 
     function buildCity(
@@ -95,5 +101,13 @@ abstract contract IAutoBattler {
         uint32 _tanks,
         uint32 _artillery
     ) public virtual;
+
+    function playerState(address _player) 
+    public view virtual returns (
+        CityStatus cityStatus,
+        uint256 points,
+        uint256 lastAttackedAt,
+        uint256 lastDefendedAt
+    );
 
 }    

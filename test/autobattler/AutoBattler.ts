@@ -1,6 +1,6 @@
 import { createFheInstance } from "../../utils/instance";
 import type { Signers } from "../types";
-import { shouldBehave } from "./AutoBattler.behavior";
+import { canAttackWithWinningAttacker, canAttackWithWinningDefender, canbuildCity } from "./AutoBattler.behavior";
 import { deployCounterFixture, getTokensFromFaucet } from "./AutoBattler.fixture";
 import hre from "hardhat";
 
@@ -23,6 +23,8 @@ describe("Unit tests", function () {
   });
 
   describe("AutoBattler", function () {
-    shouldBehave();
+    canbuildCity();
+    canAttackWithWinningAttacker();
+    canAttackWithWinningDefender();
   });
 });

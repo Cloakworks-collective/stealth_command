@@ -25,5 +25,12 @@ export async function getTokensFromFaucet() {
     ) {
       await hre.fhenixjs.getFunds(signers[0].address);
     }
+
+    if (
+      (await hre.ethers.provider.getBalance(signers[1].address)).toString() ===
+      "0"
+    ) {
+      await hre.fhenixjs.getFunds(signers[1].address);
+    }  
   }
 }
